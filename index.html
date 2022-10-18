@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <title>Captcha v3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+ 
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcEWOQZAAAAABFkMEdSM696_y4WYp9frjLvMy6j"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+   
+    <div class="container">
+    <div class="mid">
+        <br><br>
+      <input type="button" class="btn btn-primary answer_id" id="answer_id" name="answer" value="Show Div" onclick="showDiv()" />
+
+    </div>
+    <div class="mid" id="welcomeDiv"  style="display:none;">
+  <h1 style="color: #fff;">Google reCAPTHA Demo V3</h1>
+    <form id="newsletterForm" action="form.php" method="post">
+      
+      <input class="btn btn-primary answer_id"  type="submit" value="Submit">
+         
+    </form>
+ </div>
+</div>
+    <script>
+    $('#newsletterForm').submit(function(event) {
+        event.preventDefault();
+       
+ 
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LcEWOQZAAAAABFkMEdSM696_y4WYp9frjLvMy6j', {action: 'subscribe_newsletter'}).then(function(token) {
+                $('#newsletterForm').prepend('<input type="hidden" name="token" value="' + token + '">');
+                
+                $('#newsletterForm').unbind('submit').submit();
+            });;
+        });
+  });
+  </script>
+
+  <style type="text/css">
+  body {
+
+   background-image: url("background_image.jpg"); 
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-color: #35b4d8;
+   min-height: 100vh;
+   
+  }
+  .mid{
+    max-width: 600px;
+    margin: 20px auto ;
+  }
+  .answer_id{
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 80px auto;
+  }
+
+</style>
+<script type="text/javascript">
+  function showDiv() {
+   document.getElementById('welcomeDiv').style.display = "block";
+   document.getElementById('answer_id').style.display = "none";
+}
+</script>
+
+  </body>
+</html>
