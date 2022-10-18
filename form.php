@@ -20,7 +20,7 @@ if($arrResponse["success"] == '1'  && $arrResponse["score"] >= 0.5) {
     // valid submission
     // go ahead and do necessary stuff
 	 echo '<h2>Thanks for posting comment</h2>';
-      header('Location: http://google.com');
+      header('Location: https://besttovarsale.com/page/583a8db650a1525fe57d1e876ad6b595e8e49561/');
             exit;
 } else {
 		echo '<h2>You are spammer ! Get the @$%K out</h2>';
